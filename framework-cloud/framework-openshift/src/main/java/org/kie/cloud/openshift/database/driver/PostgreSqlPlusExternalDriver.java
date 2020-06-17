@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Red Hat, Inc. and/or its affiliates.
+ * Copyright 2019 Red Hat, Inc. and/or its affiliates.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,22 +13,22 @@
  * limitations under the License.
 */
 
-package org.kie.cloud.openshift.database.external;
+package org.kie.cloud.openshift.database.driver;
 
-import org.kie.cloud.openshift.database.driver.ExternalDriver;
-import org.kie.cloud.openshift.database.driver.PostgreSqlPlusExternalDriver;
-
-public abstract class AbstractPostgreSqlPlusExternalDatabase implements ExternalDatabase {
-
-    private ExternalDriver driver = new PostgreSqlPlusExternalDriver();
+public class PostgreSqlPlusExternalDriver extends AbstractExternalDriver {
 
     @Override
-    public String getDriverName() {
+    public String getName() {
         return "postgresplus";
     }
 
     @Override
-    public ExternalDriver getExternalDriver() {
-        return driver;
+    public String getImageName() {
+        return "jboss-kie-postgresplus-extension-openshift-image";
+    }
+
+    @Override
+    public String getImageVersion() {
+        return "8.3.0.12";
     }
 }
