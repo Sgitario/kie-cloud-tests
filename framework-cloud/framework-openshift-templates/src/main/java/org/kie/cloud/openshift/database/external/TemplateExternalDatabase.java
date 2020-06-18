@@ -35,7 +35,17 @@ public interface TemplateExternalDatabase extends ExternalDatabase {
         envVariables.put(OpenShiftTemplateConstants.KIE_SERVER_EXTERNALDB_USER, DeploymentConstants.getDatabaseUsername());
         envVariables.put(OpenShiftTemplateConstants.KIE_SERVER_EXTERNALDB_PWD, DeploymentConstants.getDatabasePassword());
         envVariables.put(OpenShiftTemplateConstants.KIE_SERVER_EXTERNALDB_DIALECT, Optional.ofNullable(getHibernateDialect()).orElse(DeploymentConstants.getHibernatePersistenceDialect()));
-        envVariables.put(OpenShiftTemplateConstants.KIE_SERVER_EXTERNALDB_URL, DeploymentConstants.getDatabaseUrl());
+        if (needsToSetExternalUrl()) {
+            envVariables.put(OpenShiftTemplateConstants.KIE_SERVER_EXTERNALDB_URL, DeploymentConstants.getDatabaseUrl());
+        }
+
         return envVariables;
+    }
+
+    /**
+     * @return Flag to indicate that the KIE_SERVER_EXTERNALDB_URL argument needs to be populated (default true).
+     */
+    default boolean needsToSetExternalUrl() {
+        return true;
     }
 }

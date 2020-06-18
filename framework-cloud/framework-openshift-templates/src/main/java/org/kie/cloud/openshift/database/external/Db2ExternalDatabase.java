@@ -15,4 +15,9 @@
 package org.kie.cloud.openshift.database.external;
 
 public class Db2ExternalDatabase extends AbstractDb2ExternalDatabase implements TemplateExternalDatabase {
+
+    @Override
+    public boolean needsToSetExternalUrl() {
+        return false;
+    }
 }

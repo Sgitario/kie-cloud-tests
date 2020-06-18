@@ -16,11 +16,11 @@
 package org.kie.cloud.openshift.database.external;
 
 import org.kie.cloud.openshift.database.driver.ExternalDriver;
-import org.kie.cloud.openshift.database.driver.PostgreSqlPlusExternalDriver;
+import org.kie.cloud.openshift.database.driver.PostgreSqlExternalDriver;
 
 public abstract class AbstractPostgreSqlPlusExternalDatabase implements ExternalDatabase {
 
-    private ExternalDriver driver = new PostgreSqlPlusExternalDriver();
+    private ExternalDriver driver = new PostgreSqlExternalDriver();
 
     @Override
     public String getDriverName() {

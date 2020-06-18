@@ -16,4 +16,9 @@
 package org.kie.cloud.openshift.database.external;
 
 public class PostgreSqlExternalDatabase extends AbstractPostgreSqlExternalDatabase implements TemplateExternalDatabase {
+
+    @Override
+    public boolean needsToSetExternalUrl() {
+        return false;
+    }
 }
