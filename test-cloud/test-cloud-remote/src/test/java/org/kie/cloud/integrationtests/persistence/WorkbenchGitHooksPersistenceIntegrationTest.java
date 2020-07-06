@@ -87,7 +87,7 @@ public class WorkbenchGitHooksPersistenceIntegrationTest extends AbstractMethodI
             ClusteredWorkbenchKieServerDatabasePersistentScenario clusteredWorkbenchKieServerDatabasePersistentScenario = deploymentScenarioFactory.getClusteredWorkbenchKieServerDatabasePersistentScenarioBuilder()
                 .withGitHooksDir(GIT_HOOKS_REMOTE_DIR)
                 .build();
-            scenarios.add(new Object[]{"Clustered Workbench + KIE Server + Database - Persistent", clusteredWorkbenchKieServerDatabasePersistentScenario});
+            // scenarios.add(new Object[]{"Clustered Workbench + KIE Server + Database - Persistent", clusteredWorkbenchKieServerDatabasePersistentScenario});
         } catch (UnsupportedOperationException ex) {
             logger.info("Clustered Workbench + KIE Server + Database - Persistent scenario is skipped.", ex);
         }

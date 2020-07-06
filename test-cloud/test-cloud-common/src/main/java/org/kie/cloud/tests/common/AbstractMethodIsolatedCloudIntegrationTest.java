@@ -39,7 +39,7 @@ public abstract class AbstractMethodIsolatedCloudIntegrationTest<T extends Deplo
 
     @After
     public void cleanEnvironment() {
-        ScenarioDeployer.undeployScenario(deploymentScenario);
+        // ScenarioDeployer.undeployScenario(deploymentScenario);
     }
 
     protected abstract T createDeploymentScenario(DeploymentScenarioBuilderFactory deploymentScenarioFactory);
