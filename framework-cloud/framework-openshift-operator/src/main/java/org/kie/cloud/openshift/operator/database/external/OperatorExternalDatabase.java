@@ -29,9 +29,9 @@ public interface OperatorExternalDatabase extends ExternalDatabase {
         database.setType("external");
 
         ExternalConfig config = new ExternalConfig();
+        config.setJdbcURL(DeploymentConstants.getDatabaseUrl());
         config.setDriver(getExternalDriver().getName());
         config.setDialect(Optional.ofNullable(getHibernateDialect()).orElse(DeploymentConstants.getHibernatePersistenceDialect()));
-        config.setHost(DeploymentConstants.getDatabaseHost());
         config.setPort(DeploymentConstants.getDatabasePort());
         config.setUsername(DeploymentConstants.getDatabaseUsername());
         config.setPassword(DeploymentConstants.getDatabasePassword());
