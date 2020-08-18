@@ -120,7 +120,9 @@ public class PrometheusDeployer {
     }
 
     public static void undeployOperator(Project project) {
-        OperatorDeployer.undeploy(project, PROMETHEUS_OPERATOR_NAME);
+        if (project != null) {
+            OperatorDeployer.undeploy(project, PROMETHEUS_OPERATOR_NAME);
+        }
     }
 
     private static String versioned(String url) {
@@ -208,7 +210,7 @@ public class PrometheusDeployer {
     private static void createServiceMonitorCustomResource(Project project) {
         CustomResourceDefinition customResourceDefinition = OpenShifts.admin().customResourceDefinitions().withName("servicemonitors.monitoring.coreos.com").get();
         NonNamespaceOperation<ServiceMonitor, ServiceMonitorList, ServiceMonitorDoneable, Resource<ServiceMonitor, ServiceMonitorDoneable>> serviceMonitorClient = OpenShifts.admin().customResources(customResourceDefinition, ServiceMonitor.class, ServiceMonitorList.class, ServiceMonitorDoneable.class).inNamespace(project.getName());
-       
+
         AuthOption username = new AuthOption();
         username.setName(METRIC_SECRET_NAME);
         username.setKey(METRIC_SECRET_USERNAME_KEY);
