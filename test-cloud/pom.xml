@@ -458,6 +458,21 @@ $ keytool -import -trustcacerts -alias name -keypass pass -storepass pass -keyst
       </build>
     </profile>
     <profile>
+      <id>sso</id>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <artifactId>maven-failsafe-plugin</artifactId>
+              <configuration>
+                <groups>org.kie.cloud.integrationtests.category.SingleSignOn</groups>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+    <profile>
       <id>custom-parameters</id>
       <activation>
         <property>

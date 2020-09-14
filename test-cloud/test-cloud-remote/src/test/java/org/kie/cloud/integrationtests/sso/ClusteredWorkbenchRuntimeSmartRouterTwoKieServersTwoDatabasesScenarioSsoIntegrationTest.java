@@ -27,6 +27,7 @@ import org.kie.cloud.api.deployment.constants.DeploymentConstants;
 import org.kie.cloud.api.scenario.ClusteredWorkbenchRuntimeSmartRouterTwoKieServersTwoDatabasesScenario;
 import org.kie.cloud.integrationtests.category.JBPMOnly;
 import org.kie.cloud.integrationtests.category.MonitoringK8sFs;
+import org.kie.cloud.integrationtests.category.SingleSignOn;
 import org.kie.cloud.integrationtests.testproviders.FireRulesTestProvider;
 import org.kie.cloud.integrationtests.testproviders.HttpsKieServerTestProvider;
 import org.kie.cloud.integrationtests.testproviders.HttpsWorkbenchTestProvider;
@@ -35,7 +36,7 @@ import org.kie.cloud.integrationtests.testproviders.ProcessTestProvider;
 import org.kie.cloud.tests.common.AbstractCloudIntegrationTest;
 import org.kie.cloud.tests.common.ScenarioDeployer;
 
-@Category({JBPMOnly.class, MonitoringK8sFs.class}) // Smart router is available just for jBPM
+@Category({JBPMOnly.class, MonitoringK8sFs.class, SingleSignOn.class}) // Smart router is available just for jBPM
 public class ClusteredWorkbenchRuntimeSmartRouterTwoKieServersTwoDatabasesScenarioSsoIntegrationTest extends AbstractCloudIntegrationTest {
 
     private static final String SECURED_URL_PREFIX = "secured-";
