@@ -54,7 +54,7 @@ import org.slf4j.LoggerFactory;
 
 public abstract class OpenShiftOperatorScenario<T extends DeploymentScenario<T>> extends OpenShiftScenario<T> {
 
-    protected static final String OPERATOR_DEPLOYMENT_NAME = "kie-cloud-operator";
+    protected static final String OPERATOR_DEPLOYMENT_NAME = "business-automation-operator";
 
     private static final Logger logger = LoggerFactory.getLogger(OpenShiftOperatorScenario.class);
 
@@ -103,6 +103,7 @@ public abstract class OpenShiftOperatorScenario<T extends DeploymentScenario<T>>
     private void createServiceAccountInProject(Project project) {
         logger.info("Creating service account in project '" + project.getName() + "' from " + OpenShiftResource.SERVICE_ACCOUNT.getResourceUrl().toString());
         ServiceAccount serviceAccount = project.getOpenShiftAdmin().serviceAccounts().load(OpenShiftResource.SERVICE_ACCOUNT.getResourceUrl()).get();
+        serviceAccount.getMetadata().setName(OPERATOR_DEPLOYMENT_NAME);
         project.getOpenShiftAdmin().serviceAccounts().inNamespace(project.getName()).create(serviceAccount);
     }
 
