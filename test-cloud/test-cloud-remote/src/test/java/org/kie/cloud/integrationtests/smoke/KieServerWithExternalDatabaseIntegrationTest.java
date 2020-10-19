@@ -65,7 +65,7 @@ public class KieServerWithExternalDatabaseIntegrationTest extends AbstractCloudI
 
     @AfterClass
     public static void cleanEnvironment() {
-        ScenarioDeployer.undeployScenario(deploymentScenario);
+        // ScenarioDeployer.undeployScenario(deploymentScenario);
     }
 
     @Test
