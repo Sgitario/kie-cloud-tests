@@ -55,6 +55,7 @@ import org.slf4j.LoggerFactory;
 public abstract class OpenShiftOperatorScenario<T extends DeploymentScenario<T>> extends OpenShiftScenario<T> {
 
     protected static final String OPERATOR_DEPLOYMENT_NAME = "business-automation-operator";
+
     private static final String SERVICE_ACCOUNT_NAME = "kie-cloud-operator";
 
     private static final Logger logger = LoggerFactory.getLogger(OpenShiftOperatorScenario.class);
@@ -116,6 +117,7 @@ public abstract class OpenShiftOperatorScenario<T extends DeploymentScenario<T>>
     private void createRoleBindingsInProject(Project project) {
         logger.info("Creating role bindings in project '" + project.getName() + "' from " + OpenShiftResource.ROLE_BINDING.getResourceUrl().toString());
         RoleBinding roleBinding = project.getOpenShiftAdmin().rbac().roleBindings().load(OpenShiftResource.ROLE_BINDING.getResourceUrl()).get();
+        roleBinding.getRoleRef().setName(OPERATOR_DEPLOYMENT_NAME);
         project.getOpenShiftAdmin().rbac().roleBindings().inNamespace(project.getName()).create(roleBinding);
     }
 
